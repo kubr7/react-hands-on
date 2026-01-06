@@ -19,7 +19,7 @@
     background: #ffffff;
     color: #222222;
     font-size: 1.5rem;
-    padding: 0 8px;
+    padding: 4px 8px;
     margin-bottom: 20px;
     text-align: right;
     word-wrap: break-word;
@@ -48,15 +48,7 @@
     cursor: pointer;
     font-weight: 600;
     transition: all 0.2s ease;
-    color: white;
-}
-
-.clear-btn {
-    background: #0D4715;
-}
-
-.backspace-btn {
-    background: #5a0808;
+    color: #222222;
 }
 
 .clear-btn:active {
