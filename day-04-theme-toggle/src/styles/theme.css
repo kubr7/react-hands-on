@@ -1,0 +1,24 @@
+body[data-theme="light"] {
+    background: #f8fafc;
+    color: #020617;
+}
+
+body[data-theme="dark"] {
+    background: #020617;
+    color: #f8fafc;
+}
+
+.app {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
