@@ -1,3 +1,5 @@
+import { Delete } from "lucide-react";
+
 interface Props {
     onAppend: (value: string) => void;
     onClear: () => void;
@@ -24,7 +26,7 @@ const Keypad = ({
         <div className="keypad-wrapper">
             <div className="top-controls">
                 <button className="clear-btn" onClick={onClear}>C</button>
-                <button className="backspace-btn" onClick={onBackspace}>⌫</button>
+                <button className="backspace-btn" onClick={onBackspace}><Delete /></button>
             </div>
 
             <div className="keypad">
