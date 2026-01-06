@@ -15,7 +15,7 @@ const TodoItem = ({ todo, onToggle, onDelete }: Props) => {
                 checked={todo.completed}
                 onChange={() => onToggle(todo.id)}
             />
-            <span>{todo.title}</span>
+            <span>{todo.title.charAt(0).toUpperCase() + todo.title.slice(1)}</span>
             <button onClick={() => onDelete(todo.id)}><Trash2 className="trash" /></button>
         </li>
     );
