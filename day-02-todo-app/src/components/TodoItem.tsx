@@ -1,4 +1,5 @@
 import type { Todo } from "../types/todo";
+import { Trash2 } from "lucide-react";
 
 interface Props {
     todo: Todo;
@@ -15,7 +16,7 @@ const TodoItem = ({ todo, onToggle, onDelete }: Props) => {
                 onChange={() => onToggle(todo.id)}
             />
             <span>{todo.title}</span>
-            <button onClick={() => onDelete(todo.id)}>❌</button>
+            <button onClick={() => onDelete(todo.id)}><Trash2 className="trash" /></button>
         </li>
     );
 };

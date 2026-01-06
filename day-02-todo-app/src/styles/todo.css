@@ -137,6 +137,12 @@
   transition: transform 0.2s;
 }
 
+.todo-app li button .trash {
+  height: 1rem;
+  width: 1rem;
+  color: #810505;
+}
+
 .todo-app li button:hover {
   transform: scale(1.2);
 }
