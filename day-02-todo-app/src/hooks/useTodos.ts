@@ -10,7 +10,7 @@ export function useTodos() {
   const [filter, setFilter] =
     useState<"all" | "active" | "completed">("all");
 
-  // Only persist changes (no load effect needed)
+  // Only persist changes (no load effect needed) Save to localStorage (on change)
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
