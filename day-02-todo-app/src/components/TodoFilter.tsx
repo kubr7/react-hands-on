@@ -3,16 +3,18 @@ interface Props {
     setFilter: (f: "all" | "active" | "completed") => void;
 }
 
+const FILTERS = ["all", "active", "completed"] as const;
+
 const TodoFilter = ({ filter, setFilter }: Props) => {
     return (
         <div className="filters">
-            {["all", "active", "completed"].map(f => (
+            {FILTERS.map(f => (
                 <button
                     key={f}
                     className={filter === f ? "active" : ""}
-                    onClick={() => setFilter(f as any)}
+                    onClick={() => setFilter(f)}
                 >
-                    {f}
+                    {f.charAt(0).toUpperCase() + f.slice(1)}
                 </button>
             ))}
         </div>
