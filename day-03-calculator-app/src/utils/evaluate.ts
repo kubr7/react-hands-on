@@ -1,14 +1,12 @@
 export function evaluateExpression(expression: string): string {
+    if (!expression) return "0";
+
     try {
-        // Prevent invalid evaluation
-        if (!expression) return "0";
+        const sanitized = expression.replace(/[^-()\d/*+%.]/g, "");
 
-        // eslint-disable-next-line no-new-func
-        const result = Function(`return ${expression}`)();
+        const result = Function(`"use strict"; return (${sanitized})`)();
 
-        if (result === Infinity || isNaN(result)) {
-            return "Error";
-        }
+        if (!isFinite(result)) return "Error";
 
         return result.toString();
     } catch {
