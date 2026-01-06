@@ -8,6 +8,7 @@ const TodoInput = ({ onAdd }: Props) => {
     const [value, setValue] = useState("");
 
     const handleAdd = () => {
+        if (!value.trim()) return;
         onAdd(value);
         setValue("");
     };
@@ -17,6 +18,7 @@ const TodoInput = ({ onAdd }: Props) => {
             <input
                 value={value}
                 onChange={e => setValue(e.target.value)}
+                onKeyDown={ e => e.key === "Enter" && handleAdd()}
                 placeholder="Add a task..."
             />
             <button onClick={handleAdd}>Add</button>
