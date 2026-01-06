@@ -13,14 +13,16 @@ function App() {
   } = useCalculator();
 
   return (
-    <div className="calculator">
-      <Display value={expression} />
-      <Keypad
-        onAppend={append}
-        onClear={clear}
-        onBackspace={backspace}
-        onCalculate={calculate}
-      />
+    <div className="calculator-container">
+      <div className="calculator">
+        <Display value={expression} />
+        <Keypad
+          onAppend={append}
+          onClear={clear}
+          onBackspace={backspace}
+          onCalculate={calculate}
+        />
+      </div>
     </div>
   );
 }
