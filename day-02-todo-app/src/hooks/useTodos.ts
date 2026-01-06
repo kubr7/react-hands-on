@@ -15,6 +15,8 @@ export function useTodos() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  // CRUD operations
+  // Add a new todo
   const addTodo = (title: string) => {
     if (!title.trim()) return;
     setTodos(prev => [
@@ -23,21 +25,24 @@ export function useTodos() {
     ]);
   };
 
+  // Toggle completion status
   const toggleTodo = (id: number) => {
     setTodos(prev =>
-      prev.map(t =>
-        t.id === id ? { ...t, completed: !t.completed } : t
+      prev.map(task =>
+        task.id === id ? { ...task, completed: !task.completed } : task
       )
     );
   };
 
+  // Delete a todo
   const deleteTodo = (id: number) => {
-    setTodos(prev => prev.filter(t => t.id !== id));
+    setTodos(prev => prev.filter(task => task.id !== id));
   };
 
-  const filteredTodos = todos.filter(t => {
-    if (filter === "active") return !t.completed;
-    if (filter === "completed") return t.completed;
+  // Filtered todos based on current filter
+  const filteredTodos = todos.filter(task => {
+    if (filter === "active") return !task.completed;
+    if (filter === "completed") return task.completed;
     return true;
   });
 
