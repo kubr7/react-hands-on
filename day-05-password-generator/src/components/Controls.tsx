@@ -25,18 +25,19 @@ const Controls = ({
 }: Props) => {
     return (
         <div className="controls">
-            <label>
+            <label className="length-label">
                 Length: {length}
                 <input
                     type="range"
-                    min={6}
-                    max={32}
+                    min={7}
+                    max={28}
                     value={length}
                     onChange={e => setLength(Number(e.target.value))}
                 />
             </label>
 
-            <label>
+            <div className="options-label">
+                <label>
                 <input
                     type="checkbox"
                     checked={uppercase}
@@ -71,6 +72,7 @@ const Controls = ({
                 />
                 Symbols
             </label>
+            </div>
         </div>
     );
 };

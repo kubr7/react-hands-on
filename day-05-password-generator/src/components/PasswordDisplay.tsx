@@ -18,3 +18,4 @@ const PasswordDisplay = ({ password }: Props) => {
 };
 
 export default PasswordDisplay;
+
