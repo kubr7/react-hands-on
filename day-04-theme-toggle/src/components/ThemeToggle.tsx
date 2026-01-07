@@ -4,7 +4,7 @@ const ThemeToggle = () => {
     const { theme, toggleTheme } = useTheme();
 
     return (
-        <button onClick={toggleTheme}>
+        <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
             Switch to {theme === "light" ? "Dark" : "Light"} Mode
         </button>
     );
