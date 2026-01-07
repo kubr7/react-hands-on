@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { generatePassword } from "../utils/generatePassword";
 
 export function usePassword() {
-    const [length, setLength] = useState(12);
+    const [length, setLength] = useState(7);
     const [uppercase, setUppercase] = useState(true);
-    const [lowercase, setLowercase] = useState(true);
-    const [numbers, setNumbers] = useState(true);
-    const [symbols, setSymbols] = useState(false);
+    const [lowercase, setLowercase] = useState(false);
+    const [numbers, setNumbers] = useState(false);
+    const [symbols, setSymbols] = useState(true);
+
     const [password, setPassword] = useState("");
 
-    useEffect(() => {
+    const generate = () => {
         const pwd = generatePassword({
             length,
             uppercase,
@@ -19,7 +20,7 @@ export function usePassword() {
         });
 
         setPassword(pwd);
-    }, [length, uppercase, lowercase, numbers, symbols]);
+    };
 
     return {
         length,
@@ -33,5 +34,6 @@ export function usePassword() {
         symbols,
         setSymbols,
         password,
+        generate,
     };
 }

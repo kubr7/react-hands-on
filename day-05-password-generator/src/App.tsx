@@ -11,7 +11,7 @@ function App() {
     <div className="app">
       <h1>Password Generator</h1>
       <PasswordDisplay password={passwordState.password} />
-      <Controls {...passwordState} />
+      <Controls {...passwordState} onGenerate={passwordState.generate}/>
     </div>
   );
 }
