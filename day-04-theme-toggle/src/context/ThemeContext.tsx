@@ -10,13 +10,10 @@ export interface ThemeContextType {
 export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-    const [theme, setTheme] = useState<Theme>("light");
-
-    // Load theme on first render
-    useEffect(() => {
-        const saved = localStorage.getItem("theme") as Theme | null;
-        if (saved) setTheme(saved);
-    }, []);
+    const [theme, setTheme] = useState<Theme>(() => {
+        const savedTheme = localStorage.getItem("theme");
+        return savedTheme === "dark" ? "dark" : "light";
+    });
 
     // Persist theme
     useEffect(() => {
