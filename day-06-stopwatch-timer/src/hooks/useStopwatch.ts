@@ -25,25 +25,22 @@ export function useStopwatch() {
     };
 
     useEffect(() => {
-        if (!running) {
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-            }
-            return;
-        }
+        if (!running) return;
 
         intervalRef.current = window.setInterval(() => {
-            if (startTimeRef.current) {
+            if (startTimeRef.current !== null) {
                 setElapsed(Date.now() - startTimeRef.current);
             }
         }, 50);
 
         return () => {
-            if (intervalRef.current) {
+            if (intervalRef.current !== null) {
                 clearInterval(intervalRef.current);
+                intervalRef.current = null;
             }
         };
     }, [running]);
+
 
     return {
         elapsed,
