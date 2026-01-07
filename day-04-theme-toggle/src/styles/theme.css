@@ -1,10 +1,10 @@
 body[data-theme="light"] {
     background: #f8fafc;
-    color: #020617;
+    color: #222222;
 }
 
 body[data-theme="dark"] {
-    background: #020617;
+    background: #222222;
     color: #f8fafc;
 }
 
