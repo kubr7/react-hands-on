@@ -17,8 +17,28 @@ body[data-theme="dark"] {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-button {
+.theme-toggle-h3 {
+    text-transform: uppercase;
+}
+
+/* Base button style */
+.theme-toggle {
     padding: 0.5rem 1rem;
     border-radius: 6px;
     cursor: pointer;
+    border: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode button */
+body[data-theme="light"] .theme-toggle {
+    background-color: #020617;
+    color: #f8fafc;
+}
+
+/* Dark mode button */
+body[data-theme="dark"] .theme-toggle {
+    background-color: #f8fafc;
+    color: #020617;
 }

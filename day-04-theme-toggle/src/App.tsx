@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <p>This theme applies globally.</p>
+      <h3 className="theme-toggle-h3">This theme applies globally.</h3>
     </div>
   );
 }
