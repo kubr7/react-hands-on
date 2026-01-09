@@ -17,9 +17,13 @@ export default function ExpenseList({ expenses }: Props) {
         <ul>
             {expenses.map((e) => (
                 <li key={e.id} className={`expense ${e.type}`}>
-                    <span>{e.title}</span>
+                    <div>
+                        <strong>{e.title}</strong>
+                        {e.category && <span> • {e.category}</span>}
+                    </div>
                     <span>{e.type === "income" ? "+" : "-"}{formatter.format(e.amount)}</span>
                     <small>{new Date(e.date).toLocaleDateString()}</small>
+                    {e.notes && <p className="notes">{e.notes}</p>}
                 </li>
             ))}
         </ul>

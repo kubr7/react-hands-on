@@ -9,6 +9,8 @@ export default function ExpenseForm({ onAddExpense }: Props) {
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
     const [type, setType] = useState<ExpenseType>("expense");
+    const [category, setCategory] = useState<"food" | "rent" | "travel">("food");
+    const [notes, setNotes] = useState("");
 
     const submitHandler = (e: React.FormEvent) => {
         e.preventDefault();
@@ -20,6 +22,8 @@ export default function ExpenseForm({ onAddExpense }: Props) {
             title,
             amount: Number(amount),
             type,
+            category,
+            notes: notes.trim() || undefined,
             date: new Date().toISOString(),
         });
 
@@ -46,6 +50,21 @@ export default function ExpenseForm({ onAddExpense }: Props) {
                 <option value="expense">Expense</option>
                 <option value="income">Income</option>
             </select>
+
+            <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value as any)}
+            >
+                <option value="food">Food</option>
+                <option value="rent">Rent</option>
+                <option value="travel">Travel</option>
+            </select>
+
+            <textarea
+                placeholder="Notes (optional)"
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+            />
 
             <button>Add</button>
         </form>

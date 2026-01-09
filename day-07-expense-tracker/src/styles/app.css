@@ -1,0 +1,45 @@
+.container {
+  max-width: 500px;
+  margin: auto;
+  font-family: sans-serif;
+}
+
+form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.summary {
+  margin-bottom: 16px;
+}
+
+
+.expense {
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.expense.income {
+  color: green;
+}
+
+.expense.expense {
+  color: crimson;
+}
+
+.notes {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
