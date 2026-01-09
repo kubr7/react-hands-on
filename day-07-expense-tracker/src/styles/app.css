@@ -1,60 +1,121 @@
+/* -------- GLOBAL -------- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(135deg, #0C7779, #3BC1A8);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  color: #fff;
+}
+
+/* -------- CONTAINER / GLASS CARD -------- */
 .container {
-  margin: auto;
-  padding: 1rem;
-  font-family: system-ui, sans-serif;
-  /* background-color: burlywood; */
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem;
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(12, 119, 121, 0.2);
+  backdrop-filter: blur(15px) saturate(150%);
+  -webkit-backdrop-filter: blur(15px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 /* -------- HEADER -------- */
-
 .header {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .header h1 {
   margin: 0;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   font-weight: 700;
+  color: #005461; 
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 /* -------- FORM -------- */
-
-form {
+.form {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  background: rgba(36, 158, 148, 0.15);
+  padding: 1rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 form input,
 form select,
 form textarea,
 form button {
-  padding: 8px;
-  font-size: 0.9rem;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  backdrop-filter: blur(5px);
+  transition: all 0.2s ease-in-out;
 }
 
-form textarea {
-  resize: vertical;
+form input::placeholder,
+form textarea::placeholder {
+  color: #ffffffaa;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #249E94;
+  box-shadow: 0 0 0 2px rgba(36, 158, 148, 0.2);
+}
+
+form button {
+  background-color: #249E94;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #3BC1A8;
 }
 
 /* -------- LIST -------- */
-
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* -------- EXPENSE ITEM -------- */
-
+/* -------- EXPENSE ITEM / GLASS -------- */
 .expense {
-  padding: 0.75rem;
-  border-bottom: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  background: rgba(12, 119, 121, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: transform 0.2s ease;
+}
+
+.expense:hover {
+  transform: translateY(-2px);
 }
 
 .expense-header {
@@ -64,50 +125,92 @@ ul {
 }
 
 .expense-title {
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
 .expense-amount {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1rem;
 }
 
 /* -------- TYPE COLORS -------- */
-
-.expense.income {
-  color: green;
+.expense.income .expense-amount {
+  color: #249E94; /* greenish accent */
 }
 
-.expense.expense {
-  color: crimson;
+.expense.expense .expense-amount {
+  color: #EF4444; /* red for expense remains for clarity */
 }
 
 /* -------- META INFO -------- */
-
 .expense-meta {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
   font-size: 0.8rem;
-  opacity: 0.8;
+  color: #ffffffaa; 
 }
 
 .category {
   padding: 2px 6px;
-  border-radius: 4px;
-  background: #f0f0f0;
+  border-radius: 6px;
+  background: rgba(59, 193, 168, 0.25);
   font-weight: 500;
 }
-
-/* -------- NOTES -------- */
 
 .notes {
   font-size: 0.8rem;
   opacity: 0.85;
-  margin-top: 2px;
+  color: #ffffffcc;
 }
 
 /* -------- SUMMARY -------- */
-
 .summary {
-  margin-bottom: 16px;
-  font-weight: 500;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.money {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.money p {
+  font-weight: 600;
+}
+
+.balance {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  .expense-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .money {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 }
