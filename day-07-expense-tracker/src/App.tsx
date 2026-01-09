@@ -1,11 +1,12 @@
 import { useState } from "react";
 import type { Expense } from "./types/expense";
 import Header from "./components/Header";
-import ExpenseForm from "./components/ExpenseForm";
+import ExpenseForm from "./components/forms/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import Summary from "./components/Summary";
 import './App.css'
 import "./styles/app.css";
+import IncomeForm from "./components/forms/IncomeForm";
 
 function App() {
   const [expenses, setExpenses] = useState<Expense[]>(() => {
@@ -26,7 +27,8 @@ function App() {
     <div className="container">
       <Header />
       <Summary expenses={expenses} />
-      <ExpenseForm onAddExpense={addExpense} />
+      <IncomeForm onAdd={addExpense} />
+      <ExpenseForm onAdd={addExpense} />
       <ExpenseList expenses={expenses} />
     </div>
   );
