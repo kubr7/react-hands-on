@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Expense, ExpenseType } from "../types/expense";
+import type { Expense, ExpenseType } from "../types/expense";
 
 interface Props {
     onAddExpense: (expense: Expense) => void;
