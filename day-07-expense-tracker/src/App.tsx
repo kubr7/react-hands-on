@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Expense } from "./types/expense";
+import Header from "./components/Header";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import Summary from "./components/Summary";
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Expense Tracker</h1>
+      <Header />
       <Summary expenses={expenses} />
       <ExpenseForm onAddExpense={addExpense} />
       <ExpenseList expenses={expenses} />
