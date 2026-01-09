@@ -1,4 +1,5 @@
 import type { Expense } from "../types/expense";
+import { formatCurrency } from "../utils/currency";
 
 interface Props {
     expenses: Expense[];
@@ -7,23 +8,24 @@ interface Props {
 export default function ExpenseList({ expenses }: Props) {
     if (expenses.length === 0) return <p>No records yet</p>;
 
-    const formatter = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-      });
-      
 
     return (
         <ul>
             {expenses.map((e) => (
-                <li key={e.id} className={`expense ${e.type}`}>
-                    <div>
-                        <strong>{e.title}</strong>
-                        {e.category && <span> • {e.category}</span>}
+                <li className={`expense ${e.type}`}>
+                    <div className="expense-header">
+                        <span className="expense-title">{e.title}</span>
+                        <span className="expense-amount">
+                            {e.type === "income" ? "+" : "-"}{formatCurrency(e.amount)}
+                        </span>
                     </div>
-                    <span>{e.type === "income" ? "+" : "-"}{formatter.format(e.amount)}</span>
-                    <small>{new Date(e.date).toLocaleDateString()}</small>
-                    {e.notes && <p className="notes">{e.notes}</p>}
+
+                    <div className="expense-meta">
+                        <small>{new Date(e.date).toLocaleDateString()}</small>
+                        {e.category && <span className="category">{e.category}</span>}
+                    </div>
+
+                    {e.notes && <div className="notes">{e.notes}</div>}
                 </li>
             ))}
         </ul>

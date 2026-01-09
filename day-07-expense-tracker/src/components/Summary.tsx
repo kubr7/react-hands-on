@@ -1,4 +1,5 @@
 import type { Expense } from "../types/expense";
+import { formatCurrency } from "../utils/currency";
 
 interface Props {
     expenses: Expense[];
@@ -17,9 +18,9 @@ export default function Summary({ expenses }: Props) {
 
     return (
         <div className="summary">
-            <p>Income: ₹{income}</p>
-            <p>Expense: ₹{expense}</p>
-            <h3>Balance: ₹{balance}</h3>
+            <p>Income: {formatCurrency(income)}</p>
+            <p>Expense: {formatCurrency(expense)}</p>
+            <h3>Balance: {formatCurrency(balance)}</h3>
         </div>
     );
 }

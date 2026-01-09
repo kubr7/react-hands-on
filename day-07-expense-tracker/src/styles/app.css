@@ -1,35 +1,64 @@
 .container {
   max-width: 500px;
   margin: auto;
-  font-family: sans-serif;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
 }
+
+/* -------- FORM -------- */
 
 form {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 16px;
 }
 
+form input,
+form select,
+form textarea,
+form button {
+  padding: 8px;
+  font-size: 0.9rem;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+/* -------- LIST -------- */
+
 ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-li {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.summary {
-  margin-bottom: 16px;
-}
-
+/* -------- EXPENSE ITEM -------- */
 
 .expense {
   padding: 0.75rem;
   border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
+
+.expense-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.expense-title {
+  font-weight: 500;
+}
+
+.expense-amount {
+  font-weight: 600;
+}
+
+/* -------- TYPE COLORS -------- */
 
 .expense.income {
   color: green;
@@ -39,7 +68,33 @@ li {
   color: crimson;
 }
 
-.notes {
+/* -------- META INFO -------- */
+
+.expense-meta {
+  display: flex;
+  gap: 8px;
   font-size: 0.8rem;
   opacity: 0.8;
+}
+
+.category {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #f0f0f0;
+  font-weight: 500;
+}
+
+/* -------- NOTES -------- */
+
+.notes {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+/* -------- SUMMARY -------- */
+
+.summary {
+  margin-bottom: 16px;
+  font-weight: 500;
 }
