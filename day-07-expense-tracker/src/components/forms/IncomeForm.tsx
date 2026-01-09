@@ -19,7 +19,6 @@ export default function IncomeForm({ onAdd }: Props) {
             amount: Number(amount),
             type: "income",
             category: "salary",
-            notes: "Monthly income",
             date: new Date().toISOString(),
         });
 
@@ -28,22 +27,21 @@ export default function IncomeForm({ onAdd }: Props) {
     };
 
     return (
-        <form className="form income" onSubmit={submit}>
-            <h3>➕ Add Income</h3>
+        <form className="form" onSubmit={submit}>
+            <div className="form-controls">
+                <input
+                    placeholder="Source"
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                />
 
-            <input
-                placeholder="Source"
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-            />
-
-            <input
-                type="number"
-                placeholder="Amount"
-                value={amount}
-                onChange={e => setAmount(e.target.value)}
-            />
-
+                <input
+                    type="number"
+                    placeholder="Amount"
+                    value={amount}
+                    onChange={e => setAmount(e.target.value)}
+                />
+            </div>
             <button>Add Income</button>
         </form>
     );

@@ -6,6 +6,5 @@ export interface Expense {
     amount: number;
     type: ExpenseType;
     category?: "food" | "rent" | "travel" | "salary" | "fuel" | "other";
-    notes?: string;
     date: string;
 }
