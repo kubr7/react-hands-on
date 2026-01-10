@@ -1,38 +1,137 @@
+/* -------- GLOBAL -------- */
+
+:root {
+    /* Brand colors */
+    --color-dark: #233D4D;
+    --color-primary: #215E61;
+    --color-accent: #FE7F2D;
+    --color-light: #F5FBE6;
+
+    /* Glass colors */
+    --glass-bg: rgba(95, 149, 152, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-blur: blur(12px);
+
+    /* Text */
+    --text-primary: #FF6C0C;
+    --text-secondary: #FFE08F;
+    --text-muted: rgba(6, 30, 41, 0.6);
+
+    /* Fluid typography */
+    --fs-xs: clamp(0.7rem, 0.8vw, 0.8rem);
+    --fs-sm: clamp(0.85rem, 1vw, 0.95rem);
+    --fs-md: clamp(1rem, 1.2vw, 1.1rem);
+    --fs-lg: clamp(1.25rem, 1.6vw, 1.5rem);
+    --fs-xl: clamp(1.8rem, 3vw, 2.5rem);
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+
+    --radius-lg: 16px;
+}
+
+/* ------------------ RESET ------------------ */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, sans-serif;
+    background: #ffffff;
+    color: var(--color-light);
+}
+
+/* -------- HEADER -------- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) var(--space-lg);
+
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.header p small {
+    font-size: var(--fs-sm);
+    color: var(--color-dark);
+    opacity: 0.85;
+}
+
+/* -------- COUNTER-CARD -------- */
+
 .counter-card {
-    max-width: 400px;
-    margin: 100px auto;
-    padding: 2rem;
-    border-radius: 12px;
-    background: #1e293b;
-    color: white;
+    margin: auto;
+    padding: var(--space-lg);
+    color: var(--color-primary);
     text-align: center;
 }
 
 .count {
-    font-size: 4rem;
-    margin: 1rem 0;
+    font-size: var(--fs-xl);
+    margin: var(--space-md) 0;
+    color: var(--color-accent);
 }
+
+/* -------- BUTTONS -------- */
 
 .buttons {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: var(--space-lg);
 }
 
 button {
     flex: 1;
-    padding: 0.7rem;
-    font-size: 1.2rem;
+    padding: var(--space-xs);
+    font-size: var(--space-md);
+    font-weight: 700;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
+    background-color: var(--color-accent);
+    transition: all 0.5s ease-in-out;
 }
 
 button:hover {
-    opacity: 0.9;
+    color: var(--color-light);
+    background-color: var(--color-primary);
 }
 
 button:disabled {
-    background: #475569;
+    background: var(--glass-bg);
     cursor: not-allowed;
+}
+
+/* -------- FOOTER -------- */
+
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: var(--space-md) 0;
+    text-align: center;
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--color-accent);
+    opacity: 0.85;
+}
+
+.footer p {
+    margin: 0;
 }
