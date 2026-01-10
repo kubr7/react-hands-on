@@ -1,3 +1,5 @@
+import { Copyright } from "lucide-react";
+
 interface FooterProps {
     title?: string;
 }
@@ -5,8 +7,11 @@ interface FooterProps {
 export default function Footer({ title = "React" }: FooterProps) {
     return (
         <footer className="footer">
-            <p>
-                © {new Date().getFullYear()} • Built with {title}
+            <p className="footer-content">
+                <Copyright className="footer-icon" />
+                <span>
+                    {new Date().getFullYear()} • Built with {title}
+                </span>
             </p>
         </footer>
     );

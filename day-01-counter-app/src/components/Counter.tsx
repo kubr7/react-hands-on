@@ -6,7 +6,7 @@ const Counter = () => {
 
     return (
         <div className="counter-card">
-            <div className="count">Count: {count}</div>
+            <div className="count">{count}</div>
             <div className="buttons">
                 <button onClick={increment}>Increment</button>
                 <button onClick={decrement} disabled={count === 0}>

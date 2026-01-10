@@ -2,10 +2,12 @@
 
 :root {
     /* Brand colors */
-    --color-dark: #233D4D;
-    --color-primary: #215E61;
-    --color-accent: #FE7F2D;
+    --color-dark: #95190C;
+    --color-primary: #E3B505;
+    --color-accent: #044B7F;
     --color-light: #F5FBE6;
+    --color-black: #000000;
+    --color-white: #ffffff;
 
     /* Glass colors */
     --glass-bg: rgba(95, 149, 152, 0.15);
@@ -41,10 +43,45 @@
 
 body {
     margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: Inter, system-ui, sans-serif;
-    background: #ffffff;
+    background: var(--color-white);
     color: var(--color-light);
 }
+
+.app-container {
+    min-height: 100vh;
+
+    /* BACKGROUND IMAGE */
+    background-image: url("/img/bg-counter.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* DARK OVERLAY FOR READABILITY */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Overlay layer */
+.app-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 0;
+}
+
+/* Make children appear above overlay */
+.app-container>* {
+    position: relative;
+    z-index: 1;
+}
+
+
 
 /* -------- HEADER -------- */
 .header {
@@ -53,8 +90,8 @@ body {
     align-items: center;
     padding: var(--space-md) var(--space-lg);
 
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
+    background: rgba(10, 10, 10, 0.65);
+    backdrop-filter: blur(6px);
 
     position: sticky;
     top: 0;
@@ -63,36 +100,89 @@ body {
 
 .header h1 {
     margin: 0;
-    font-size: var(--fs-xl);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-white);
 }
 
 .header p small {
-    font-size: var(--fs-sm);
+    font-size: clamp(0.5rem, 1vw, 1rem);
     color: var(--color-dark);
     opacity: 0.85;
 }
 
+/* ODOMETER WRAPPER */
+.odometer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+/* GROUP (DATE / TIME) */
+.odometer-group {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    background: linear-gradient(180deg, #1b1b1b, #0e0e0e);
+}
+
+/* DIGIT SLOT */
+.digit {
+    width: 20px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Courier New", monospace;
+    font-size: var(--fs-xs);
+    font-weight: bold;
+
+    color: #f5f5f5;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+/* SEPARATORS */
+.separator {
+    font-size: var(--fs-xs);
+    font-weight: bold;
+    color: #888;
+    user-select: none;
+}
+
+
 /* -------- COUNTER-CARD -------- */
 
 .counter-card {
+    width: 100%;
+    max-width: 750px;
     margin: auto;
     padding: var(--space-lg);
-    color: var(--color-primary);
-    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(14px);
+    border-radius: 10px;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 10px 40px rgba(0, 0, 0, 0.8);
 }
 
 .count {
     font-size: var(--fs-xl);
-    margin: var(--space-md) 0;
-    color: var(--color-accent);
+    margin: auto;
 }
 
 /* -------- BUTTONS -------- */
 
 .buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: var(--space-lg);
 }
@@ -102,15 +192,19 @@ button {
     padding: var(--space-xs);
     font-size: var(--space-md);
     font-weight: 700;
-    border: none;
+    color: var(--color-white);
     cursor: pointer;
-    background-color: var(--color-accent);
+    border: 1px solid var(--color-white);
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 10px 40px rgba(0, 0, 0, 0.8);
     transition: all 0.5s ease-in-out;
 }
 
 button:hover {
-    color: var(--color-light);
-    background-color: var(--color-primary);
+    color: var(--color-black);
+    background-color: var(--color-white);
 }
 
 button:disabled {
@@ -122,16 +216,31 @@ button:disabled {
 
 .footer {
     width: 100%;
-    position: absolute;
-    bottom: 0;
     padding: var(--space-md) 0;
     text-align: center;
     font-size: var(--fs-sm);
-    font-weight: 700;
-    color: var(--color-accent);
+    font-weight: 600;
+    color: var(--color-white);
     opacity: 0.85;
 }
 
-.footer p {
-    margin: 0;
+.footer-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    line-height: 1;
+}
+
+.footer-icon {
+    width: 1em;
+    height: 1em;
+    stroke-width: 1.8;
+}
+
+/* -------- MOBILE -------- */
+@media (max-width: 480px) {
+    .footer {
+        font-size: var(--fs-xs);
+        padding: var(--space-sm) 0;
+    }
 }
