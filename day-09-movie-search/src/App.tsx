@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import type { Movie } from "./types/movie";
 import { searchMovies } from "./services/movieService";
 import { useDebounce } from "./hooks/useDebounce";
+import Header from "./components/Header";
+import SearchForm from "./components/SearchForm";
+import MovieGrid from "./components/MovieGrid";
+import "./styles/movie.css";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -13,13 +17,14 @@ function App() {
 
   const debouncedQuery = useDebounce(query);
 
+  // Reset on new search
   useEffect(() => {
     if (!debouncedQuery) return;
-
     setMovies([]);
     setPage(1);
   }, [debouncedQuery]);
 
+  // Fetch movies
   useEffect(() => {
     if (!debouncedQuery) return;
 
@@ -27,8 +32,9 @@ function App() {
       try {
         setLoading(true);
         setError(null);
+
         const data = await searchMovies(debouncedQuery, page);
-        setMovies(prev => [...prev, ...data.movies]);
+        setMovies((prev) => [...prev, ...data.movies]);
         setTotal(data.total);
       } catch (err) {
         setError((err as Error).message);
@@ -41,32 +47,20 @@ function App() {
   }, [debouncedQuery, page]);
 
   return (
-    <div>
-      <h1>Movie Search</h1>
+    <div className="app-container">
+      <Header />
 
-      <input
-        placeholder="Search movies"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+      <SearchForm query={query} onChange={setQuery} />
+
+      {error && <p className="error">{error}</p>}
+      {loading && <p className="loading">Loading...</p>}
+
+      <MovieGrid
+        movies={movies}
+        total={total}
+        loading={loading}
+        onLoadMore={() => setPage((p) => p + 1)}
       />
-
-      {error && <p>{error}</p>}
-      {loading && <p>Loading...</p>}
-
-      <div className="grid">
-        {movies.map((m) => (
-          <div key={m.imdbID}>
-            <img src={m.Poster} alt={m.Title} />
-            <p>{m.Title} ({m.Year})</p>
-          </div>
-        ))}
-      </div>
-
-      {movies.length < total && !loading && (
-        <button onClick={() => setPage(p => p + 1)}>
-          Load More
-        </button>
-      )}
     </div>
   );
 }

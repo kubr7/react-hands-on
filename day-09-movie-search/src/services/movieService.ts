@@ -8,7 +8,7 @@ export async function searchMovies(query: string, page: number) {
     );
 
     const data = await res.json();
-
+    
     if (data.Response === "False") {
         throw new Error(data.Error);
     }
